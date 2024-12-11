@@ -1,0 +1,79 @@
+body {
+    display: block;
+    margin: 0px;
+}
+.skip {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    height: 1px;
+    width: 1px;
+    text-align: left;
+    overflow: hidden;}
+nav {margin: 10px 0 0 0;}
+#header {margin: 10px 0 0 10px;}
+#alert{background-color: #ee0000;
+    color:#ffffff;
+    margin: 5px 10px 0 0;
+    padding: 5px 5px 5px 5px;}
+#banner{background-image: url("../images/waterfall-optimized-crop.jpg");
+    height: 500px;
+    background-size:cover;
+    position: relative;
+    margin:10px 0 0 0;}
+@media screen and (max-width: 600px) {
+    #banner{background-image: url("../images/waterfall-optimized-mobile.jpg");
+        height: 500px;
+        background-size:cover;
+        position: relative;
+        margin:10px 0 0 0;
+    }
+    }
+#bannerText{
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 0 5%;
+    color:#ffffff;
+    font-family: sans-serif;
+}
+#bannerText h2{
+    font-size: 3em;
+}
+#bannerText h3{
+    font-size: 2em;
+}
+a.skip:active,
+a.skip:focus,
+a.skip:hover {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    padding: 5px;
+    background-color: #f1ff28;}
+#content{
+    margin-right: auto;
+    margin-left:  auto;
+    max-width: 1420px;
+    padding-right: 10px;
+    padding-left:  10px;
+}
+.column {
+    float: left;
+    width: 33.33%;
+}
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.column {width: 100%;}
+}
+img{max-width: 100%;}
+button{margin:5px;}
+label{margin:5px;}
+input{margin:5px;}
