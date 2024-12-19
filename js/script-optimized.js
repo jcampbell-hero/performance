@@ -1,3 +1,4 @@
+// Basic script for validation of form required fields and display of a success message.
 var button = document.getElementById("btnSubmit");
 var fname;
 var lname;

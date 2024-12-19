@@ -1,7 +1,9 @@
+//Initialization for form submission
 var button = document.getElementById("btnSubmit");
 var fname;
 var lname;
 
+//Adding content to the header, after a 2 second delay to emulate a poorly optimized script
 setTimeout(function(){
     console.log("Script completed");
 
@@ -18,8 +20,8 @@ setTimeout(function(){
     navElement.append(newAlert);
 }, 2000);
 
+//From submission validation and success message display
 button.addEventListener("click",buttonClick);
-
 function buttonClick(){
     fname = document.getElementById("fname").value;
     lname = document.getElementById("lname").value;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Performance Demo Page - Hints and Answers</title>
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="css/styles-optimized.css">
+    <link rel="preload" href="images/waterfall-optimized-crop.jpg" as="image">
+    <link rel="preload" href="images/waterfall-optimized-mobile.jpg" as="image">
+  </head>
+ 
+  <body>
+    <a href="#content" class="skip">Skip to content</a>
+    <div id="content">
+        <h1>Performance Demo Page - Hints and Answers</h1>
+        <p>Use your performance testing knowledge on the Slow demo page to find all the performance issues.</p>
+        <p>Use the Hints section below as suggestions of issues to look for.</p>
+        <p>When you are ready, view the Answers section below to see the performance issues and their solutions.</p>
+        <a class="switch" href="slow.html">View the Slow demo page</a><br>
+        <a class="switch" href="optimized.html">View the Optimized demo page</a>
+    </div>
+    <div id="content">
+        <h2>Hints</h2>
+        <p>1. Watch the Slow demo page while it loads. What do you notice?</p>
+        <p>2. Check the Chrome DevTools network tab while the page is loading. What stands out?</p>
+        <p>3. Review the Chrome DevTools console for errors or warnings.</p>
+        <p>4. What are the recommendations listed on the Lighthouse test results (diagnostics)?</p>
+    </div>
+    <div id="content">
+        <h2>Answers</h2>
+        <button onclick="toggleElement('answers')">Show/Hide Answers</button>
+        <div id="answers" style="display: none;">
+            <p>These are the most serious performance issues on the page - you may be able to find more!</p>
+            <p class="answer">1. Content shifts on load</p>
+            <p>While the page loads, some content in the top of the page appears after a few seconds and shifts all content below it down.</p>
+            <p>This occurs due to a script that dynamically adds the header logo and the alert message to the top of the page.</p>
+            <p><span style="font-style: italic;">Solution:</span> Scripts that add content to the page should be optimized as much as possible, or the page should be structured so that the items can load without shifting the elements below them.</p>
+            <p class="answer">2. Excessive banner image size and inefficient image format</p>
+            <p>The full-width banner image is a png with over 15 mb filesize - far too large to allow for a reasonable load time.</p>
+            <p>It is the page's Largest Contentful Paint (LCP) element, so it has a large impact on the page's performance score.</p>
+            <p>Additionally, the image is not sized correctly - it is being cropped by the container, so much of the image that is downloaded is not even displayed.</p>
+            <p>The banner image also does not have different versions for mobile and desktop viewports, so the large desktop image is always loaded.</p>
+            <p><span style="font-style: italic;">Solution:</span> All images should be optimized. Large images typically have the best balance of display quality and filesize in jpg or webp format. Images should be sized correctly for their intended display.</p>
+            <p class="answer">3. Three-column images are not properly sized</p>
+            <p>The images in the three-column component have large dimensions, and are sized down by the CSS.</p>
+            <p>This means the file sizes of the images are much larger than if they were sized correctly.</p>
+            <p><span style="font-style: italic;">Solution:</span> images should be sized correctly for their use. In modern projects, an image CDN can help ensure this and provide other features.</p>
+            <p class="answer">4. Two JS libraries are loaded, but not used</p>
+            <p>In the Lighthouse report and the network tab you can see "jquery-ui.js" and "jquery-3.7.1.js".</p>
+            <p>They are loaded but not used, causing unnecessary network transfer and processing.</p>
+            <p>They are also not minified - which would decrease their filesize significantly.</p>
+            <p><span style="font-style: italic;">Solution:</span> if you see large libraries or network calls that are loaded that may not be in use, check with your teammates to ensure that they are necessary.</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/script-answers.js"></script>
+</body>
+</html>
